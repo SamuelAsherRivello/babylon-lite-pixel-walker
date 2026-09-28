@@ -15,35 +15,51 @@ A little world in your hands. Pour sand, water, oil, and fire into an enchanted 
 <details>
 <summary>Read the full original prompt (edited for grammar, punctuation, spelling, and formatting)</summary>
 
+```text
 Use this template:
 
-[https://github.com/SamuelAsherRivello/github-repository-template](https://github.com/SamuelAsherRivello/github-repository-template)
+https://github.com/SamuelAsherRivello/github-repository-template
 
-Create a new GitHub repository called `babylon-lite-pixel-walker`, with the project name `pixel-walker` in the repository and “Pixel Walker” in display text.
+Create a new GitHub repository called babylon-lite-pixel-walker, with the project
+name pixel-walker in the repository and “Pixel Walker” in display text.
 
-Use the Babylon Lite engine specifically to create a browser game using WebGPU. The game must have a portrait aspect ratio, with new, original artwork in the borders and gutters. The aspect ratio and gutters can draw inspiration from:
+Use the Babylon Lite engine specifically to create a browser game using WebGPU.
+The game must have a portrait aspect ratio, with new, original artwork in the
+borders and gutters. The aspect ratio and gutters can draw inspiration from:
 
-[https://github.com/SamuelAsherRivello/babylon-light-stealth-grid](https://github.com/SamuelAsherRivello/babylon-light-stealth-grid)
+https://github.com/SamuelAsherRivello/babylon-light-stealth-grid
 
 Import the skills from:
 
-[https://github.com/SamuelAsherRivello/ai-skills-library](https://github.com/SamuelAsherRivello/ai-skills-library)
+https://github.com/SamuelAsherRivello/ai-skills-library
 
-Then use `$explore`, followed by `$propose`, to create a complete game with the following goal:
+Then use $explore, followed by $propose, to create a complete game with the
+following goal:
 
-Make a game where the character uses an on-screen virtual controller, WASD, and the arrow keys to walk around a 2D side-view level. The level must fit on one screen, with no scrolling.
+Make a game where the character uses an on-screen virtual controller, WASD, and
+the arrow keys to walk around a 2D side-view level. The level must fit on one
+screen, with no scrolling.
 
-Add buttons in the top navigation that let the user choose substances such as sand, water, oil, and fire. The cursor then drops the selected substance into the world, like sand pouring from a hand.
+Add buttons in the top navigation that let the user choose substances such as
+sand, water, oil, and fire. The cursor then drops the selected substance into the
+world, like sand pouring from a hand.
 
-Include options to change the resolution of the world. Smaller particles will be slower to run but provide higher fidelity.
+Include options to change the resolution of the world. Smaller particles will
+be slower to run but provide higher fidelity.
 
-[https://store.steampowered.com/app/881100/Noita/](https://store.steampowered.com/app/881100/Noita/)
+https://store.steampowered.com/app/881100/Noita/
 
-Do not ask me any questions. Keep working until the project is on GitHub, released, and playable through a working live demo link published to GitHub Pages.
+Do not ask me any questions. Keep working until the project is on GitHub,
+released, and playable through a working live demo link published to GitHub Pages.
 
-This ChatGPT thread points to a local folder intended to be your new working directory. When you are done, the project must exist as a local copy with no uncommitted changes, and the full code must be on GitHub.
+This ChatGPT thread points to a local folder intended to be your new working
+directory. When you are done, the project must exist as a local copy with no
+uncommitted changes, and the full code must be on GitHub.
 
-[$github](app://connector_76869538009648d5b282a4bb21c3d157)
+$github: app://connector_76869538009648d5b282a4bb21c3d157
+```
+
+Prompt links: [Repository template](https://github.com/SamuelAsherRivello/github-repository-template) · [Layout inspiration](https://github.com/SamuelAsherRivello/babylon-light-stealth-grid) · [AI Skills Library](https://github.com/SamuelAsherRivello/ai-skills-library) · [Noita](https://store.steampowered.com/app/881100/Noita/) · [$github connector](app://connector_76869538009648d5b282a4bb21c3d157)
 
 </details>
 
