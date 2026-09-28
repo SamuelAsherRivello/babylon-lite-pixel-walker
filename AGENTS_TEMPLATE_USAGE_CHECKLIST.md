@@ -20,6 +20,6 @@ This new project was created from the supplied repository template, with fresh G
 
 ## Publication gate
 
-- [ ] Repository About metadata, Pages deployment, release workflow, public playthrough, final archive, and clean synchronized local main verified.
+- [x] Repository About metadata, Pages deployment, release workflow, public playthrough, and clean synchronized local main verified at v0.0.1. The completed change is archived at `openspec/changes/archive/2026-09-28-build-pixel-walker/`.
 
 The original interactive cleanup prompt is intentionally omitted because the user explicitly requested no questions. This concise record replaces the template checklist. Skill autocomplete refresh after a future app restart was not used as a delivery dependency; instructions were read directly during this task.

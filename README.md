@@ -62,6 +62,8 @@ npm run test:browser
 
 Tests use full Chromium and WebGPU, verify real keyboard/touch input, complete the collection route, and check desktop/mobile framing and unsupported-device handling. GPU availability is required for gameplay tests. Browser output is ignored under `test-results/`. No formatting command is configured.
 
+See the [delivery verification record](pixel-walker/documentation/verification.md) for public-demo test evidence, release/deployment runs, and known limitations.
+
 ## Project details
 
 - **Rendering:** pinned `@babylonjs/lite@1.25.0`, a WebGPU engine, nearest-sampled dynamic texture, and one sprite draw call. A detached Canvas 2D composes original pixel art before Babylon Lite uploads and renders it.

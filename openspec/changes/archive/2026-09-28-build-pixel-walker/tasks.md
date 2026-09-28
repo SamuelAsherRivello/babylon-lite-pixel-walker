@@ -16,4 +16,6 @@
 
 - [x] 3.1 Adapt existing deployment/release workflows and document controls, architecture, art, skills, and limitations; verify commands, links, and a current README screenshot.
 - [x] 3.2 Run full tests/build and validate/sync OpenSpec; verify accepted specifications and completed artifacts. Archive after publication evidence is recorded.
-- [ ] 3.3 Commit and push complete code, enable Pages, release through the existing workflow, and test the public demo; verify release tag/commit, successful workflow runs, and clean synchronized local main.
+- [x] 3.3 Commit and push complete code, enable Pages, release through the existing workflow, and test the public demo; verify release tag/commit, successful workflow runs, and clean synchronized local main.
+
+Publication verified at v0.0.1 (5eeea5711019ca0f89d59ca96fe00d270a2a5041). All six public-browser tests passed. See pixel-walker/documentation/verification.md for evidence. Final archival changes contain documentation only.
