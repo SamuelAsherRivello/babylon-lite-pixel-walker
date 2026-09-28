@@ -2,7 +2,10 @@
 
 # Node and Vite output.
 node_modules/
-/project-name/dist/
+/pixel-walker/dist/
+/test-results/
+/playwright-report/
+debug.log
 
 # Local configuration. Commit examples only, never credentials.
 .env

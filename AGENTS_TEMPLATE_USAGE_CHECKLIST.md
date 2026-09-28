@@ -1,137 +1,25 @@
-# AI Template Usage Checklist
+# Pixel Walker — Template Delivery Record
 
-> Repository creation workflow: When the user provides a Git URL, treat that repository as an inspiration/source repository. Do not clone it as the working project and do not preserve its history. Create a brand-new repository whose name matches the project name, copy the files from the inspiration repository's current `HEAD` into the new repository, and make exactly one commit named `Initial Commit`. At the end of this checklist, the local project must be a checkout of the new repository with that new repository configured as `origin`; do not publish project-specific work to the template or inspiration repository.
+This new project was created from the supplied repository template, with fresh Git history and an independent origin. The user's explicit request authorized implementation, public publication, release, and local synchronization without further questions.
 
-> IMPORTANT: This checklist is completed in the new project repository created from this template. Do not commit project-specific changes to `github-repository-template`. First create a separate repository whose name matches the project name, then perform the checklist and commit the work there.
+## Completed setup
 
-Use this checklist when creating a project from this repository. Make choices
-from the new project's actual needs. This repository includes a small
-Node/npm/Vite baseline that may be retained or replaced deliberately.
+- [x] Fresh history verified at one root commit, `84b6037`, titled `Initial Commit`, before project implementation.
+- [x] New public repository: `SamuelAsherRivello/babylon-lite-pixel-walker`; no project work published to the template.
+- [x] Application/package name `pixel-walker`; display name **Pixel Walker**; Vite repository base configured.
+- [x] Babylon Lite 1.25.0, WebGPU, JavaScript modules, Vite, and only necessary dependencies.
+- [x] Original portrait frame, corner roles, generated gutter art, original code-authored sprites, and documented provenance.
+- [x] Complete movement, materials, resolution choices, objective, recovery, and replay.
+- [x] Focused physics and real-browser tests, including an input-only complete expedition and concurrent touch input.
+- [x] Current browser screenshot inspected and saved at the canonical documentation path.
+- [x] README, contributor guidance, ignore rules, source layout, credits, and inherited workflows adapted.
+- [x] No credentials or backend configuration needed; no unnecessary environment template added.
+- [x] OpenSpec 1.13.1 verified; explore, propose, and apply completed with all planning artifacts.
+- [x] All 19 upstream library skills imported as physical copies. Upstream 1.11.0 generated metadata deliberately preserved instead of rewritten; see the skills import report.
+- [x] Accepted behavior specifications synchronized and validated before archival.
 
-## 1. Confirm the request
+## Publication gate
 
-- [ ] Follow the template-use workflow in `AGENTS.md` and record whether this
-      repository is being used to create a new project or as reference-only
-      inspiration.
-- [ ] Confirm the project's purpose, target platforms, selected stack,
-      deployment target, dependency policy, and whether an OpenSpec workflow is
-      required. Do not invent an unresolved input.
+- [ ] Repository About metadata, Pages deployment, release workflow, public playthrough, final archive, and clean synchronized local main verified.
 
-## 2. Establish the project
-
-- [ ] Create a brand-new repository named for the confirmed project, based on
-      this codebase's current `HEAD`. Copy its tracked files, including tracked
-      dotfiles, without copying `.git`, commit history, branches, or tags. Do not
-      fork this repository or use a clone of it as the new working project.
-- [ ] Initialize fresh Git history in the new project and create exactly one
-      commit with the exact message `Initial Commit`. Create the destination
-      GitHub repository empty, without an automatically generated README,
-      license, or `.gitignore` commit, and configure it as `origin` before
-      pushing the initial snapshot.
-- [ ] Verify the new repository starts with one commit:
-      `git rev-list --count HEAD` must return `1`, and
-      `git log -1 --format=%B` must return
-      `Initial Commit`. Confirm `origin` points to the new project repository
-      before continuing with project-specific changes.
-- [ ] Rename `project-name/`, update the Vite `root` setting, and replace every
-      `{project-name}`, `{github-owner}`, and `{repository-name}` placeholder
-      with confirmed project metadata before adding project-specific
-      implementation.
-- [ ] Rename the README H1 (`# {project-name}`) to the confirmed project name.
-- [ ] Replace the README introduction placeholder (`This is the project
-      repo....`) with a concise summary from implemented behavior.
-- [ ] Set the new GitHub repository's About description to a concise summary
-      of the project's purpose and implemented behavior, consistent with its
-      README.
-- [ ] Set GitHub topics dynamically from the project's actual purpose,
-      technologies, target platforms, and implemented features. Select relevant
-      topics for each project and remove inherited template topics that do not
-      apply; do not use a fixed topic list or advertise planned capabilities.
-- [ ] Always set the GitHub About website URL to
-      `https://www.samuelasherrivello.com/` (www.SamuelAsherRivello.com/).
-      Keep the project's live demo URL in the README's Live Demo section.
-- [ ] Replace the README getting-started placeholder (`This is the getting
-      started...`) with accurate setup requirements and first-run guidance.
-- [ ] Replace the README project-details placeholder (`This is the project
-      details...`) with verified project-specific architecture, source layout,
-      and workflow details.
-- [ ] Remove or replace placeholder images, demo links, commands, packages, and
-      release instructions.
-- [ ] Keep the baseline package files at the repository root and application
-      source, tests, and assets under the chosen application directory, as
-      described in `AGENTS.md`.
-- [ ] Preserve or deliberately adapt the HTML template corner roles from
-      `AGENTS.md`: upper-left project title, upper-right project links,
-      lower-right project version, and lower-left project settings.
-
-## 3. Choose the technical baseline
-
-- [ ] Add only the runtime, package manager, and dependencies required by the
-      project.
-- [ ] Record actual setup, run, test, build, and formatting commands in the
-      README.
-- [ ] Update `.gitignore` for generated outputs, local state, and secrets; keep
-      the baseline `node_modules/` and `project-name/dist/` exclusions if
-      Node/Vite remains.
-- [ ] Add a safe `.env.example` only if the project requires configuration; it
-      must contain no real credentials.
-
-## 4. Define quality evidence
-
-- [ ] Add focused automated checks appropriate to the chosen stack.
-- [ ] For user-visible work, verify the rendered result in its real runtime or
-      browser and capture only current, representative screenshots.
-- [ ] Keep temporary test outputs ignored; store the canonical README image in
-      the project's documentation directory.
-- [ ] Document any manual verification that cannot be automated.
-
-## 5. Configure OpenSpec
-
-- [ ] Use the bundled `.agents/skills/openspec-*` files, generated with
-      OpenSpec 1.13.1. They are ready to use without regeneration during this
-      checklist; do not hand-edit generated skill files.
-- [ ] Verify `openspec --version` reports 1.13.1. If the CLI is missing or a
-      different version, install `@fission-ai/openspec@1.13.1` following the
-      [official installation guide](https://openspec.dev/docs/installation).
-- [ ] Run `openspec doctor --json`, confirm `.agents/skills/.openspec-target`
-      contains `codex`, and confirm generated `metadata.generatedBy` values
-      are 1.13.1.
-- [ ] Reopen Codex at the resulting repository root and verify `$openspec-*`
-      autocomplete includes `$openspec-apply-change` before relying on the
-      repository-local workflow.
-- [ ] Replace the neutral `openspec/config.yaml` context with verified project
-      constraints before planning the first substantial change.
-- [ ] Keep `changes/` for active work and `specs/` for accepted specifications.
-- [ ] Sync accepted delta specifications before archiving a completed change.
-
-## 6. Prepare delivery
-
-- [ ] Add CI and deployment only after their commands and target are known.
-- [ ] Confirm the release versioning policy before keeping or documenting the
-      baseline patch-only release workflow.
-- [ ] Document the real release process, including versioning and deployment
-      verification, in the README.
-- [ ] Confirm that the README demo URL is live before replacing its placeholder.
-
-## 7. Delivery gate
-
-- [ ] Search for `project-name`, `{github-owner}`, `{repository-name}`,
-      `{command}`, `{live-demo-url}`, `{demo_url}`,
-      `github-repository-template`, `GitHub Repository Template`, and other
-      template placeholder text; resolve or deliberately remove every
-      remaining occurrence.
-- [ ] Run every documented local setup, test, build, and formatting command.
-      Run deployment or release verification only when authorized; otherwise
-      state clearly whether it is intentionally not applicable or awaits user
-      authorization.
-- [ ] Verify that README links, screenshots, commands, packages, deployment
-      instructions, and release instructions describe the resulting project,
-      not this template.
-- [ ] Verify the new repository's GitHub About description and topics match
-      the finished project and its website URL is exactly
-      `https://www.samuelasherrivello.com/`.
-
-## 8. Ask about checklist cleanup
-
-- [ ] After completing this checklist, ask the user explicitly whether they
-      would like the AI to clean up this checklist.
+The original interactive cleanup prompt is intentionally omitted because the user explicitly requested no questions. This concise record replaces the template checklist. Skill autocomplete refresh after a future app restart was not used as a delivery dependency; instructions were read directly during this task.

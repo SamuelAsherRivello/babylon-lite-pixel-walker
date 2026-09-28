@@ -1,12 +1,14 @@
 schema: spec-driven
 context: |
-  Repository: project-name.
-  This repository starts as a reusable template with no application
-  implementation, product decisions, or approved technology stack.
-  Canonical project documentation assets live in project-name/documentation/.
-  Before proposing or applying a change, record the project's verified purpose,
-  runtime targets, architecture, dependency policy, security constraints, and
-  validation commands here.
+  Pixel Walker is a browser falling-sand platform sandbox in pixel-walker/.
+  Repository: SamuelAsherRivello/babylon-lite-pixel-walker.
+  Use @babylonjs/lite and WebGPU, Vite, and JavaScript modules. Keep npm at root.
+  A single 9:16 world never scrolls. Support desktop keys and multitouch controls.
+  Material simulation and character collision share one resizable cell grid.
+  Original art; no assets copied from Noita or the portrait-layout reference.
+  Deploy static output to GitHub Pages. No server, credentials, or analytics.
+  Test deterministic physics with node:test and browser behavior with Playwright.
+  The supplied template already provides Pages and patch-release workflows.
 rules:
   proposal:
     - Mark unresolved decisions clearly; recommendations are not approvals.
