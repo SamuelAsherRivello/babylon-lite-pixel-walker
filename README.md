@@ -10,6 +10,47 @@ A little world in your hands. Pour sand, water, oil, and fire into an enchanted 
 
 <a href="pixel-walker/documentation/screenshot01.png"><img src="pixel-walker/documentation/screenshot01.png" width="900" alt="Pixel Walker: portrait cavern playground surrounded by original alchemist-garden artwork" /></a>
 
+## Original AI Prompt
+
+<details>
+<summary>Read the full original prompt (edited for grammar, punctuation, spelling, and formatting)</summary>
+
+Use this template:
+
+[https://github.com/SamuelAsherRivello/github-repository-template](https://github.com/SamuelAsherRivello/github-repository-template)
+
+Create a new GitHub repository called `babylon-lite-pixel-walker`, with the project name `pixel-walker` in the repository and “Pixel Walker” in display text.
+
+Use the Babylon Lite engine specifically to create a browser game using WebGPU. The game must have a portrait aspect ratio, with new, original artwork in the borders and gutters. The aspect ratio and gutters can draw inspiration from:
+
+[https://github.com/SamuelAsherRivello/babylon-light-stealth-grid](https://github.com/SamuelAsherRivello/babylon-light-stealth-grid)
+
+Import the skills from:
+
+[https://github.com/SamuelAsherRivello/ai-skills-library](https://github.com/SamuelAsherRivello/ai-skills-library)
+
+Then use `$explore`, followed by `$propose`, to create a complete game with the following goal:
+
+Make a game where the character uses an on-screen virtual controller, WASD, and the arrow keys to walk around a 2D side-view level. The level must fit on one screen, with no scrolling.
+
+Add buttons in the top navigation that let the user choose substances such as sand, water, oil, and fire. The cursor then drops the selected substance into the world, like sand pouring from a hand.
+
+Include options to change the resolution of the world. Smaller particles will be slower to run but provide higher fidelity.
+
+[https://store.steampowered.com/app/881100/Noita/](https://store.steampowered.com/app/881100/Noita/)
+
+Do not ask me any questions. Keep working until the project is on GitHub, released, and playable through a working live demo link published to GitHub Pages.
+
+This ChatGPT thread points to a local folder intended to be your new working directory. When you are done, the project must exist as a local copy with no uncommitted changes, and the full code must be on GitHub.
+
+[$github](app://connector_76869538009648d5b282a4bb21c3d157)
+
+</details>
+
+- **Recorded execution time:** 48 minutes, 28 seconds (completed project goal timer; not total chat duration).
+- **AI model:** OpenAI GPT-6 Astra (`gpt-6-astra`) in Codex. The initial turn used GPT-5.6 Luna (`gpt-5.6-luna`).
+- **Intelligence level ([reasoning effort](https://developers.openai.com/api/docs/guides/reasoning)):** High (`high`) for the main build; Medium (`medium`) for the initial turn. Model and effort values are from this chat's session log.
+
 ## Live Demo
 
 [Launch the browser game](https://samuelasherrivello.github.io/babylon-lite-pixel-walker/). Requires a WebGPU-capable browser and graphics device. Current Chrome or Edge with hardware acceleration is the tested path. Unsupported devices get a readable retry screen; there is no alternative rendering engine.
