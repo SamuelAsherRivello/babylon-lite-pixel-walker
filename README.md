@@ -4,11 +4,11 @@
 
 A little world in your hands. Pour sand, water, oil, and fire into an enchanted cavern, then walk, jump, and swim through the result. Find three lantern seeds and bring them back to the gate—or just keep experimenting.
 
-**[Play Pixel Walker](https://samuelasherrivello.github.io/babylon-lite-pixel-walker/)** · [Releases](https://github.com/SamuelAsherRivello/babylon-lite-pixel-walker/releases)
+# Live Demo
 
-## Images
+**[Play Pixel Walker](https://samuelasherrivello.github.io/babylon-lite-pixel-walker/)** 
 
-<a href="pixel-walker/documentation/screenshot01.png"><img src="pixel-walker/documentation/screenshot01.png" width="900" alt="Pixel Walker: portrait cavern playground surrounded by original alchemist-garden artwork" /></a>
+
 
 ## Original AI Prompt
 
@@ -66,6 +66,10 @@ Prompt links: [Repository template](https://github.com/SamuelAsherRivello/github
 - **Recorded execution time:** 48 minutes, 28 seconds (completed project goal timer; not total chat duration).
 - **AI model:** OpenAI GPT-6 Astra (`gpt-6-astra`) in Codex. The initial turn used GPT-5.6 Luna (`gpt-5.6-luna`).
 - **Intelligence level ([reasoning effort](https://developers.openai.com/api/docs/guides/reasoning)):** High (`high`) for the main build; Medium (`medium`) for the initial turn. Model and effort values are from this chat's session log.
+
+## Images
+
+<a href="pixel-walker/documentation/screenshot01.png"><img src="pixel-walker/documentation/screenshot01.png" width="900" alt="Pixel Walker: portrait cavern playground surrounded by original alchemist-garden artwork" /></a>
 
 ## Live Demo
 
