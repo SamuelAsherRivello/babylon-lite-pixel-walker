@@ -4,12 +4,6 @@
 
 A little world in your hands. Pour sand, water, oil, and fire into an enchanted cavern, then walk, jump, and swim through the result. Find three lantern seeds and bring them back to the gate—or just keep experimenting.
 
-# Live Demo
-
-**[Play Pixel Walker](https://samuelasherrivello.github.io/babylon-lite-pixel-walker/)** 
-
-
-
 ## Original AI Prompt
 
 <details>
