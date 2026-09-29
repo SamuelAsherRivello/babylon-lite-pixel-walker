@@ -63,7 +63,7 @@ Prompt links: [Repository template](https://github.com/SamuelAsherRivello/github
 
 ## Images
 
-<a href="pixel-walker/documentation/screenshot01.png"><img src="pixel-walker/documentation/screenshot01.png" width="900" alt="Pixel Walker: portrait cavern playground surrounded by original alchemist-garden artwork" /></a>
+<a href="pixel-walker/documentation/screenshot01.png"><img src="pixel-walker/documentation/screenshot01.png" width="400" alt="Pixel Walker: portrait cavern playground surrounded by original alchemist-garden artwork" /></a>
 
 ## Live Demo
 
