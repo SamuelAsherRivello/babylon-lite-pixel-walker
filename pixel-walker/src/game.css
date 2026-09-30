@@ -63,11 +63,15 @@ meter::-webkit-meter-optimum-value { background: #84b899; }
 .jump span { font-size: 7cqw; line-height: 1; } .jump small { font: 2.2cqw ui-monospace, monospace; letter-spacing: .25cqw; }
 .jump:hover, .jump.held { background: #6a7456; transform: translateY(1px); }
 .frame-footer { position: absolute; bottom: 0; width: 100%; height: 7cqw; padding: 0 4cqw; display: flex; align-items: center; justify-content: space-between; background: #14252bee; border-top: 1px solid #46584d; color: #8ca397; font: 2.1cqw ui-monospace, monospace; }
+.footer-right { display: flex; align-items: center; gap: 2.2cqw; }
 .footer-button { background: none; border: 0; display: flex; align-items: center; gap: 1.5cqw; padding: 0; height: 100%; font: inherit; color: #b7c4af; }
 .footer-button svg { width: 3.2cqw; height: 3.2cqw; }
 .performance { display: flex; align-items: center; gap: 1.4cqw; font-size: 1.8cqw; }
 .performance i { background: #8ebba1; width: 1cqw; height: 1cqw; border-radius: 50%; box-shadow: 0 0 6px #8ebba166; }
 .version { font-size: 2cqw; }
+.fps-toggle { display: flex; align-items: center; gap: 2cqw; margin: 3cqw 0; color: #cfdbcf; font-size: 3cqw; }
+.fps-toggle input { accent-color: #96bd96; width: 4cqw; height: 4cqw; }
+.performance[hidden] { display: none; }
 .frame-corners { pointer-events: none; position: absolute; inset: -10px; }
 .frame-corners i { position: absolute; width: 16px; height: 16px; border: 2px solid #b0a67b; background: #303c3f; box-shadow: inset 0 0 0 3px #626953; }
 .frame-corners i:nth-child(1) { left: 0; top: 0; } .frame-corners i:nth-child(2) { right: 0; top: 0; } .frame-corners i:nth-child(3) { left: 0; bottom: 0; } .frame-corners i:nth-child(4) { right: 0; bottom: 0; }

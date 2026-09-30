@@ -72,7 +72,15 @@ export async function createRenderer(canvas, onFailure) {
       if (!m) { data[p + 3] = 0; continue; }
       const x = i % world.width, y = Math.floor(i / world.width), n = ((x * 17 + y * 31) % 13) - 6;
       let c = COLORS[m], a = 255;
-      if (m === M.STONE) {
+      if (m === M.STONE && (world.stoneBlock[i] || world.stoneBlockSettled[i])) {
+        const movingId = world.stoneBlock[i], settled = world.stoneBlockSettled[i];
+        const isBlock = j => movingId ? world.stoneBlock[j] === movingId : world.stoneBlockSettled[j] === settled;
+        const left = x === 0 || !isBlock(i - 1);
+        const top = y === 0 || !isBlock(i - world.width);
+        const right = x === world.width - 1 || !isBlock(i + 1);
+        const bottom = y === world.height - 1 || !isBlock(i + world.width);
+        c = left || top || right || bottom ? [143, 151, 139] : [88, 101, 99];
+      } else if (m === M.STONE) {
         const exposed = y > 0 && world.cells[i - world.width] !== M.STONE;
         c = exposed ? [91, 125, 91] : ((Math.floor(y / (7 * world.scale)) % 2 ? x + 9 * world.scale : x) % Math.floor(15 * world.scale) < world.scale || y % Math.floor(7 * world.scale) < world.scale) ? [27, 38, 44] : COLORS[m];
       }

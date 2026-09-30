@@ -40,6 +40,29 @@ test('resolution changes preserve proportions and rebuild a fresh game', () => {
     assert.equal(game.collected, 0); assert.equal(game.player.health, 100); assert.equal(game.world.tick, 0);
   }
 });
+test('sand settles and wakes after support is removed', () => {
+  const w = box(); w.set(30, 88, M.SAND); step(w, 10);
+  assert.equal(w.get(30, 89), M.SAND); assert.equal(w.get(30, 88), M.AIR);
+  const sand = [...w.cells].findIndex(m => m === M.SAND); assert.ok(sand >= 0);
+  assert.equal(w.settled[sand], 1);
+});
+test('poured stone falls as a block and becomes fixed while level terrain stays fixed', () => {
+  const w = new World('coarse'); const fixedBefore = w.fixed.reduce((n, x) => n + x, 0);
+  w.paint(80, 100, M.STONE, 5); const blocks = new Set(w.stoneBlock.filter(Boolean)); assert.ok(blocks.size > 0);
+  const id = blocks.values().next().value, before = [...w.stoneBlock].findIndex(x => x === id);
+  step(w, 30); const after = [...w.stoneBlock].findIndex(x => x === id);
+  assert.ok(after > before || !w.stoneBlock.includes(id));
+  assert.ok(w.stoneBlockSettled.includes(id), 'the falling block must eventually settle');
+  assert.ok(w.fixed.reduce((n, x) => n + x, 0) >= fixedBefore);
+  assert.equal(w.at(40, 237), M.STONE);
+  const settledBlockCell = [...w.stoneBlockSettled].findIndex(Boolean);
+  assert.ok(settledBlockCell >= 0);
+  const bx = settledBlockCell % w.width, by = Math.floor(settledBlockCell / w.width);
+  w.set(bx, by, M.AIR);
+  assert.equal(w.fixed[settledBlockCell], 0);
+  w.set(bx, by, M.STONE);
+  assert.equal(w.fixed[settledBlockCell], 0);
+});
 test('movement collides with floors and walls; pause freezes the world', () => {
   const game = new Game(); for (let i = 0; i < 600; i++) game.step({ axis: -1 });
   assert.ok(game.player.x >= 5); assert.ok(game.player.y <= 266.1);

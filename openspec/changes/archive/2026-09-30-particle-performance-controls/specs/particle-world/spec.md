@@ -1,24 +1,9 @@
-# Particle World
+# Spec Delta
 
-## Purpose
-
-Let players build and alter a live material simulation by pouring substances into a bounded cavern.
-
-## Requirements
-
-### Requirement: Continuous material tools
-The game SHALL expose sand, water, oil, fire, stone, and erase tools in its top navigation and a brush-size control. Holding or dragging a pointer inside the world SHALL apply the selected material continuously; releasing, canceling, or losing focus SHALL stop pouring. UI input SHALL NOT pour into the world.
-
-#### Scenario: Sand pour
-- **WHEN** a player holds a pointer above a platform with Sand selected
-- **THEN** grains fall and accumulate in a pile while the pointer remains held
-
-#### Scenario: Input cancellation
-- **WHEN** a pouring gesture is canceled or the window loses focus
-- **THEN** no additional material is emitted
+## MODIFIED Requirements
 
 ### Requirement: Material interactions
-Sand SHALL settle and displace liquids, and settled grains SHALL stop movement calculations until a nearby material change can make them mobile again. Water SHALL flow below oil, oil SHALL ignite next to fire, and water SHALL quench nearby fire and produce rising steam. Fire, steam, and smoke SHALL have finite lifetimes. Poured stone SHALL form larger blocks that fall under gravity and become immobile when supported; built-in level terrain SHALL remain fixed. Solid cells SHALL constrain particles and the player.
+Sand SHALL settle and displace liquids, water SHALL flow below oil, oil SHALL ignite next to fire, and water SHALL quench nearby fire and produce rising steam. Fire, steam, and smoke SHALL have finite lifetimes. Solid cells SHALL constrain particles and the player. Grains at rest SHALL stop receiving full movement calculations until a nearby material change can make them mobile again. Poured stone SHALL form larger blocks that fall under gravity and become immobile when supported; built-in terrain SHALL remain fixed.
 
 #### Scenario: Oil ignition
 - **WHEN** fire touches a pool of oil
@@ -41,7 +26,7 @@ Sand SHALL settle and displace liquids, and settled grains SHALL stop movement c
 - **THEN** built-in platforms and boundaries remain in place
 
 ### Requirement: Resolution and simulation controls
-The game SHALL provide eight clearly labeled cell resolutions with a finer/slower tradeoff while preserving the same physical proportions. Changing resolution SHALL start a fresh level with a visible explanation. A Settings checkbox SHALL control an FPS readout in the lower-right frame corner. Pause SHALL freeze simulation and movement; reset SHALL restore the initial world, health, and objective state. Background tabs SHALL pause without accumulating catch-up work.
+The game SHALL provide eight clearly labeled cell resolutions with a finer/slower tradeoff, preserving the same physical proportions. Changing resolution SHALL start a fresh level with a visible explanation. A Settings checkbox SHALL control an FPS readout in the lower-right frame corner. Pause SHALL freeze simulation and movement; reset SHALL restore the initial world, health, and objective state. Background tabs SHALL pause without accumulating catch-up work.
 
 #### Scenario: Resolution change
 - **WHEN** the player selects a particle resolution

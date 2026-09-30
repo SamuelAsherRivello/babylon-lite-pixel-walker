@@ -39,6 +39,12 @@ test('resolution, recovery, help, and responsive portrait framing', async ({ pag
   await page.getByRole('button', { name: 'Settings', exact: true }).click();
   await page.getByLabel('Particle resolution').selectOption('fine');
   expect((await snapshot(page)).grid).toEqual([270, 480]);
+  await page.getByLabel('Particle resolution').selectOption('limit');
+  expect((await snapshot(page)).grid).toEqual([720, 1280]);
+  await page.getByLabel('Show FPS in the lower-right corner').uncheck();
+  await expect(page.locator('#performance')).toBeHidden();
+  await page.getByLabel('Show FPS in the lower-right corner').check();
+  await expect(page.locator('#performance')).toBeVisible();
   await page.getByRole('button', { name: 'Close settings' }).click();
   await page.getByRole('button', { name: 'How to play' }).click();
   await expect(page.getByText('Make your own way.')).toBeVisible();

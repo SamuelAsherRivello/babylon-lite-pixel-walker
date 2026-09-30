@@ -84,13 +84,18 @@ Collect the three golden lantern seeds, then return to the gate at the lower lef
 | Pause / reset | P / R or toolbar buttons | Toolbar buttons |
 | Rescue / resolution / fullscreen | Settings | Settings |
 
-Sand settles into piles and supports the walker. Water flows below oil and extinguishes flames into steam. Oil spreads and burns when touched by fire. Stone creates stable platforms; Erase clears a path. Fire damages the walker, but a safe respawn preserves collected seeds. Settings also has a rescue action.
+Sand settles into piles and supports the walker, sleeping until a nearby change can move it again. Water flows below oil and extinguishes flames into steam. Oil spreads and burns when touched by fire. Poured stone forms larger falling blocks that settle into permanent ledges; built-in terrain stays fixed. Erase clears a path. Fire damages the walker, but a safe respawn preserves collected seeds. Settings also has a rescue action and a checkbox for the lower-right FPS readout.
 
 ### Particle resolution
 
 - **Coarse:** 90 × 160 cells; larger grains and lowest CPU cost.
 - **Balanced:** 180 × 320 cells; the default.
 - **Fine:** 270 × 480 cells; smaller grains, more detail, and higher CPU cost.
+- **Ultra:** 360 × 640 cells.
+- **Extreme:** 450 × 800 cells.
+- **Max:** 540 × 960 cells.
+- **Insane:** 630 × 1120 cells.
+- **Limit:** 720 × 1280 cells; highest detail and cost, and may run slowly depending on device.
 
 Changing resolution starts a fresh expedition. The level, character, and frame retain the same physical proportions. Pausing, opening a dialog, losing focus, or hiding the tab stops play. Resume with P or the play button.
 

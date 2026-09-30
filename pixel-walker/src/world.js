@@ -1,7 +1,7 @@
 export const M = Object.freeze({ AIR: 0, STONE: 1, SAND: 2, WATER: 3, OIL: 4, FIRE: 5, STEAM: 6, SMOKE: 7 });
 export const WIDTH = 180;
 export const HEIGHT = 320;
-export const PRESETS = Object.freeze({ coarse: 90, balanced: 180, fine: 270 });
+export const PRESETS = Object.freeze({ coarse: 90, balanced: 180, fine: 270, ultra: 360, extreme: 450, max: 540, insane: 630, limit: 720 });
 export const PLATFORMS = [
   [0, 266, 180, 54], [15, 236, 48, 7], [91, 212, 68, 8],
   [54, 181, 45, 7], [10, 151, 48, 8], [81, 124, 40, 7], [128, 94, 42, 9],
@@ -22,6 +22,13 @@ export class World {
     this.cells = new Uint8Array(this.width * this.height);
     this.life = new Uint16Array(this.cells.length);
     this.moved = new Uint32Array(this.cells.length);
+    this.settled = new Uint8Array(this.cells.length);
+    this.fixed = new Uint8Array(this.cells.length);
+    this.terrain = new Uint8Array(this.cells.length);
+    this.stoneBlock = new Uint32Array(this.cells.length);
+    this.stoneBlockSettled = new Uint32Array(this.cells.length);
+    this.blockSize = Math.max(2, Math.round(3 * this.scale));
+    this.nextBlockId = 1;
     this.random = seededRandom(seed);
     this.tick = 0;
     if (!empty) this.buildLevel();
@@ -34,8 +41,16 @@ export class World {
   set(x, y, material, life = 0) {
     if (x < 0 || y < 0 || x >= this.width || y >= this.height) return;
     const i = y * this.width + x;
+    this.wakeAround(x, y);
     this.cells[i] = material;
+    this.settled[i] = 0; this.fixed[i] = 0; this.terrain[i] = 0; this.stoneBlock[i] = 0; this.stoneBlockSettled[i] = 0;
     this.life[i] = life || (material === M.FIRE ? 80 + (this.random() * 65 | 0) : material >= M.STEAM ? 90 + (this.random() * 100 | 0) : 0);
+  }
+  wakeAround(x, y) {
+    const { width: w, height: h } = this;
+    for (let cy = Math.max(1, y - 1); cy <= Math.min(h - 2, y + 1); cy++) for (let cx = Math.max(1, x - 1); cx <= Math.min(w - 2, x + 1); cx++) {
+      const i = cy * w + cx; if (this.cells[i] === M.SAND) this.settled[i] = 0;
+    }
   }
   fill(x, y, w, h, material) {
     for (let cy = Math.floor(y * this.scale); cy < Math.ceil((y + h) * this.scale); cy++) {
@@ -49,6 +64,7 @@ export class World {
     this.fill(75, 257, 35, 9, M.WATER);
     this.fill(142, 261, 24, 5, M.OIL);
     for (let x = 33; x < 52; x++) this.fill(x, 236 - Math.max(1, 6 - Math.abs(x - 43) / 2), 1, Math.max(1, 6 - Math.abs(x - 43) / 2), M.SAND);
+    for (let i = 0; i < this.cells.length; i++) if (this.cells[i] === M.STONE) { this.fixed[i] = 1; this.terrain[i] = 1; }
   }
   paint(x, y, material, radius = 3, player = null) {
     if (y < 56 || y > 265 || x < 4 || x > 176) return;
@@ -62,6 +78,23 @@ export class World {
         const current = this.get(px, py);
         if (material === M.AIR || (current === M.AIR && (material === M.STONE || this.random() > 0.28))) this.set(px, py, material);
       }
+    }
+    if (material === M.STONE) this.formStoneBlocks();
+  }
+  formStoneBlocks() {
+    const { width: w, height: h, cells } = this, size = this.blockSize;
+    for (let y = h - size - 1; y >= 1; y--) for (let x = 1; x < w - size; x++) {
+      const i = y * w + x;
+      if (cells[i] !== M.STONE || this.fixed[i] || this.stoneBlock[i]) continue;
+      // Align candidate blocks to the grid so ordinary round brush strokes collect naturally.
+      const bx0 = Math.floor(x / size) * size, by0 = Math.floor(y / size) * size, topLeft = by0 * w + bx0;
+      if (x !== bx0 || y !== by0 || bx0 < 1 || by0 < 1 || bx0 + size >= w || by0 + size >= h) continue;
+      let valid = true;
+      for (let by = 0; by < size && valid; by++) for (let bx = 0; bx < size; bx++) {
+        const j = (by0 + by) * w + bx0 + bx;
+        if (cells[j] !== M.STONE || this.fixed[j] || this.stoneBlock[j]) { valid = false; break; }
+      }
+      if (valid) { const id = this.nextBlockId++; for (let by = 0; by < size; by++) for (let bx = 0; bx < size; bx++) this.stoneBlock[(by0 + by) * w + bx0 + bx] = id; }
     }
   }
   swap(a, b) {
@@ -88,18 +121,37 @@ export class World {
       for (let k = 1; k < w - 1; k++) {
         const x = forward ? k : w - 1 - k, i = y * w + x;
         const m = cells[i];
-        if (m < M.SAND || this.moved[i] === this.tick) continue;
+        if (m === M.STONE && !this.fixed[i] && this.stoneBlock[i]) {
+          const id = this.stoneBlock[i], size = this.blockSize;
+          if ((x > 0 && this.stoneBlock[i - 1] === id) || (y > 0 && this.stoneBlock[i - w] === id) || this.moved[i] === this.tick) continue;
+          let canFall = y + size < h - 1;
+          if (canFall) {
+            let clear = true;
+            for (let bx = 0; bx < size; bx++) if (this.get(x + bx, y + size) !== M.AIR) { clear = false; break; }
+            canFall = clear;
+          }
+          if (canFall) {
+            for (let by = size - 1; by >= 0; by--) for (let bx = size - 1; bx >= 0; bx--) {
+              const from = (y + by) * w + x + bx, to = from + w;
+              cells[to] = cells[from]; cells[from] = M.AIR; this.stoneBlock[to] = id; this.stoneBlock[from] = 0; this.moved[to] = this.tick;
+            }
+          } else {
+            for (let by = 0; by < size; by++) for (let bx = 0; bx < size; bx++) { const at = (y + by) * w + x + bx; this.fixed[at] = 1; this.stoneBlock[at] = 0; this.stoneBlockSettled[at] = id; }
+          }
+          continue;
+        }
+        if (m < M.SAND || this.moved[i] === this.tick || (m === M.SAND && this.settled[i])) continue;
         const dir = this.random() < 0.5 ? -1 : 1;
         if (m === M.FIRE) {
           let quenched = false;
           for (const j of [i - w, i + w, i - 1, i + 1]) {
             if (cells[j] === M.WATER) { cells[i] = M.STEAM; life[i] = 100; cells[j] = M.AIR; quenched = true; break; }
           }
-          if (quenched) continue;
+          if (quenched) { this.wakeAround(x, y); continue; }
           for (const j of [i - w, i + w, i - 1, i + 1]) {
             if (cells[j] === M.OIL && this.random() < 0.42) { cells[j] = M.FIRE; life[j] = 90 + (this.random() * 90 | 0); this.moved[j] = this.tick; }
           }
-          if (--life[i] <= 0) { cells[i] = this.random() < 0.45 ? M.SMOKE : M.AIR; life[i] = 100; continue; }
+          if (--life[i] <= 0) { cells[i] = this.random() < 0.45 ? M.SMOKE : M.AIR; life[i] = 100; this.wakeAround(x, y); continue; }
           if (this.random() < 0.25) this.move(i, x + dir, y - 1, m);
           continue;
         }
@@ -108,7 +160,8 @@ export class World {
           if (!this.move(i, x, y - 1, m)) this.move(i, x + dir, y - 1, m);
           continue;
         }
-        if (this.move(i, x, y + 1, m) || this.move(i, x + dir, y + 1, m) || this.move(i, x - dir, y + 1, m)) continue;
+        if (this.move(i, x, y + 1, m) || this.move(i, x + dir, y + 1, m) || this.move(i, x - dir, y + 1, m)) { if (m === M.SAND) this.wakeAround(x, y); continue; }
+        if (m === M.SAND) { this.settled[i] = 1; continue; }
         if (m === M.WATER || m === M.OIL) {
           // Only slide through contiguous air: never jump a thin wall.
           for (const sign of [dir, -dir]) {

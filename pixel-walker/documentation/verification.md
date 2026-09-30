@@ -14,10 +14,10 @@ Verified 2026-09-28 on Windows with full Chromium and a real WebGPU device.
 ## Automated evidence
 
 - `npm ci`: clean install, 0 reported vulnerabilities.
-- `npm test`: 9 passing tests for materials, density, reactions, resolution, collision, health/recovery, deterministic simulation, and the full collection route at all three resolutions.
+- `npm test`: 11 passing tests for materials, density, reactions, resolution across eight tiers, settled-sand wake-up, falling/settled stone blocks, collision, health/recovery, deterministic simulation, and the full collection route at every resolution.
 - `npm run build`: successful Vite production build using pinned Babylon Lite 1.25.0.
 - `npm run test:browser`: 6 passing local WebGPU/browser tests.
-- The same 6 browser tests passed against the public HTTPS Pages URL: rendering/draw calls; walking/jumping/pouring/pause/reset; resolution/help/responsive sizing; unsupported-GPU recovery; the full keyboard-only expedition and replay; simultaneous touch movement/pouring and cancellation; blur/recovery behavior.
+- The 6 local Chromium browser tests pass: WebGPU rendering/draw calls; walking/jumping/pouring/pause/reset; all resolution settings and optional FPS visibility; help and responsive portrait sizing; unsupported-GPU recovery; the full keyboard-only expedition and replay; simultaneous touch movement/pouring and cancellation; blur/recovery behavior.
 - Desktop 1440 × 1000, phone 390 × 844, small phone 320 × 568, and landscape 844 × 390 frame geometry verified.
 - Three accepted OpenSpec capabilities and the complete change validated strictly. Their requirement content was compared before archival; the completed change is archived at `openspec/changes/archive/2026-09-28-build-pixel-walker/`.
 - Local main matched origin/main with no tracked or untracked changes after pulling the release commit. The final documentation-only archive commit is subsequently pushed and rechecked at handoff.
